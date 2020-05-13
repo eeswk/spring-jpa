@@ -10,12 +10,22 @@ public class MemberDTO implements Serializable {
     private Long id;
     private String name;
 
+    private String teamName;
+
     @QueryProjection
     public MemberDTO(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    public MemberDTO() {
+    }
+
+    public MemberDTO(Long id, String name, String teamName) {
+        this.id = id;
+        this.name = name;
+        this.teamName = teamName;
+    }
 
     public Long getId() {
         return id;
@@ -31,5 +41,13 @@ public class MemberDTO implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 }

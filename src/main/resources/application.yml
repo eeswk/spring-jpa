@@ -3,7 +3,8 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
-    url: jdbc:h2:tcp://localhost/~/test
+    #url: jdbc:h2:tcp://localhost/~/test
+    url: jdbc:h2:mem:testdb
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -14,6 +15,10 @@ spring:
         show_sql: true
         use_sql_commnets: true
         format_sql: true
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
 
 logging:
   level:
@@ -24,3 +29,5 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
+server:
+  port: 8087

@@ -10,9 +10,25 @@ public class Member {
     private String name;
     private int age;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(targetEntity = Team.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
+    public Member() {
+    }
+
+    public Member(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Member(String name, int age, Team team) {
+        this.name = name;
+        this.age = age;
+        this.team = team;
+    }
+
 
     public Team getTeam() {
         return team;
@@ -20,15 +36,6 @@ public class Member {
 
     public void setTeam(Team team) {
         this.team = team;
-    }
-
-    public Member() {
-        super();
-    }
-
-    public Member(String name, int age) {
-        this.name = name;
-        this.age = age;
     }
 
     public int getAge() {
@@ -53,5 +60,15 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", team=" + team +
+                '}';
     }
 }
