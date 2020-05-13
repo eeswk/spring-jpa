@@ -5,6 +5,7 @@ import com.sample.springjpa.springjpa.entity.Member;
 import com.sample.springjpa.springjpa.entity.MemberDTO;
 import com.sample.springjpa.springjpa.entity.Team;
 import com.sample.springjpa.springjpa.repository.TeamRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,8 +25,13 @@ public class TeamService {
 
     @Transactional(readOnly = true)
     public List<TeamDTO> findAll() {
+
         List<Team> teams = teamRepository.findAll();
 
+        ModelMapper modelMapper = new ModelMapper();
+        List<TeamDTO> resultList = teams.stream().map(t -> modelMapper.map(t, TeamDTO.class)).collect(Collectors.toList());
+
+        /*
         List<TeamDTO> resultList = teams.stream()
                 .map(t -> {
                     TeamDTO teamDTO = new TeamDTO(t.getId(), t.getName());
@@ -35,6 +41,8 @@ public class TeamService {
 
                     return teamDTO;
                 }).collect(Collectors.toList());
+
+         */
         return resultList;
     }
 }

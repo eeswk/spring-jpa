@@ -2,10 +2,14 @@ package com.sample.springjpa.springjpa.controller.dto;
 
 import com.sample.springjpa.springjpa.entity.Member;
 import com.sample.springjpa.springjpa.entity.MemberDTO;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class TeamDTO {
     private Long id;
     private String name;
